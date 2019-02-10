@@ -1,3 +1,138 @@
-h1 {
-  color: crimson;
+@import url("https://fonts.googleapis.com/css?family=Lato:300,400");
+
+/* CSS variables */
+:root {
+  --color-primary: #43c6ac;
+  --color-secondary: #191654;
+  --color-blue-dark: #2c3e50;
+  --color-white: #fafafa;
+}
+
+/* simple reset */
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  box-sizing: border-box;
+  list-style-type: none;
+  text-decoration: none;
+}
+
+body {
+  font-family: "Lato", sans-serif;
+  font-weight: 300;
+  background-image: linear-gradient(
+    to right,
+    var(--color-primary),
+    var(--color-secondary)
+  );
+  color: var(--color-blue-dark);
+}
+
+a:link,
+a:visited,
+a:hover,
+a:active {
+  color: var(--color-blue-dark);
+  cursor: pointer;
+  display: block;
+}
+a:hover {
+  color: var(--color-primary);
+}
+#nav__check {
+  display: none;
+}
+
+.nav {
+  height: 50px;
+  width: 100%;
+  background-color: var(--color-white);
+  display: grid;
+  grid-template-columns: 1fr max-content;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.22);
+  padding: 0px 20px;
+  align-items: center;
+}
+
+/* Main area code below it's not needed  */
+.main {
+  text-align: center;
+  margin-top: 15%;
+}
+.heading {
+  font-size: 6vw;
+  color: var(--color-white);
+}
+.subheading {
+  font-size: 2vw;
+}
+/*-------------------------------------*/
+
+@media (max-width: 600px) {
+  a {
+    font-size: 42px;
+  }
+  .nav__items--container {
+    display: grid;
+    grid-template-rows: repeat(3, 1fr);
+    grid-gap: 10px;
+    padding-top: 30%;
+  }
+  .nav__btn {
+    display: inline-block;
+    position: absolute;
+    right: 0px;
+    top: 0px;
+  }
+  .nav__btn > label {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    padding: 14px;
+    cursor: pointer;
+  }
+  .nav__btn > label:hover {
+    background-color: rgba(67, 198, 172, 1);
+  }
+  .nav__btn > label > span {
+    display: block;
+    width: 25px;
+    height: 10px;
+    border-top: 1px solid var(--color-blue-dark);
+  }
+  .nav__items {
+    position: absolute;
+    display: block;
+    width: 100%;
+    background-color: var(--color-primary);
+    height: 0px;
+    transition: all 0.3s ease-in;
+    overflow-y: hidden;
+    top: 50px;
+    left: 0px;
+    text-align: center;
+    color: white;
+  }
+  a:hover {
+    color: var(--color-white);
+  }
+  #nav__check:not(:checked) + .nav__items {
+    height: 0px;
+  }
+  #nav__check:checked + .nav__items {
+    height: calc(100vh - 50px);
+    overflow-y: auto;
+  }
+}
+
+@media (min-width: 600px) {
+  .nav__items--container {
+    display: grid;
+    grid-template-columns: repeat(3, max-content);
+    grid-gap: 10px;
+  }
+  .nav__btn {
+    display: none;
+  }
 }
